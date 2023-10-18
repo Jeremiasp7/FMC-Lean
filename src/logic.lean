@@ -153,7 +153,15 @@ end
 theorem lem_irrefutable :
   ¬¬(P∨¬P)  :=
 begin
-  sorry,
+  by_cases h : P,
+  intro pp,
+  apply pp,
+  left,
+  exact h,
+  intro pp,
+  apply pp,
+  right,
+  exact h,
 end
 
 
@@ -164,7 +172,14 @@ end
 theorem peirce_law_weak :
   ((P → Q) → P) → ¬¬P  :=
 begin
-  sorry,
+  intro pqp,
+  intro np,
+  apply np,
+  apply pqp,
+  intro p,
+  have b : false := np p,
+  exfalso,
+  exact b,
 end
 
 
