@@ -20,6 +20,7 @@ end
 theorem doubleneg_elim :
   ¬¬P → P  :=
 begin
+<<<<<<< HEAD
   intro p,
   by_contradiction hboom,
   by_cases h : P,
@@ -27,11 +28,15 @@ begin
   exact b,
   have b : false := p hboom,
   exact b,
+=======
+  sorry,
+>>>>>>> 6a5cb529a223be050b3888aeeeb68128cf26973a
 end
 
 theorem doubleneg_law :
   ¬¬P ↔ P  :=
 begin
+<<<<<<< HEAD
   split,
   intro p,
   by_contradiction hboom,
@@ -44,6 +49,9 @@ begin
   intro pb,
   have b : false := pb p,
   contradiction,
+=======
+  sorry,
+>>>>>>> 6a5cb529a223be050b3888aeeeb68128cf26973a
 end
 
 ------------------------------------------------
@@ -53,22 +61,30 @@ end
 theorem disj_comm :
   (P ∨ Q) → (Q ∨ P)  :=
 begin
+<<<<<<< HEAD
   intro pq,
   cases pq with p q,
   right,
   exact p,
   left,
   exact q,
+=======
+  sorry,
+>>>>>>> 6a5cb529a223be050b3888aeeeb68128cf26973a
 end
 
 theorem conj_comm :
   (P ∧ Q) → (Q ∧ P)  :=
 begin
+<<<<<<< HEAD
   intro pq,
   cases pq,
   split,
   exact pq_right,
   exact pq_left,
+=======
+  sorry,
+>>>>>>> 6a5cb529a223be050b3888aeeeb68128cf26973a
 end
 
 
@@ -79,6 +95,7 @@ end
 theorem impl_as_disj_converse :
   (¬P ∨ Q) → (P → Q)  :=
 begin
+<<<<<<< HEAD
   intro pq,
   intro p,
   cases pq with np q,
@@ -86,11 +103,15 @@ begin
   have h : false := np p,
   contradiction,
   exact q,
+=======
+  sorry,
+>>>>>>> 6a5cb529a223be050b3888aeeeb68128cf26973a
 end
 
 theorem disj_as_impl :
   (P ∨ Q) → (¬P → Q)  :=
 begin
+<<<<<<< HEAD
   intro pq,
   intro np,
   cases pq with p q,
@@ -98,6 +119,9 @@ begin
   have b : false := np p,
   contradiction,
   exact q,
+=======
+  sorry,
+>>>>>>> 6a5cb529a223be050b3888aeeeb68128cf26973a
 end
 
 
@@ -108,28 +132,37 @@ end
 theorem impl_as_contrapositive :
   (P → Q) → (¬Q → ¬P)  :=
 begin
+<<<<<<< HEAD
   intro pq,
   intro nq,
   intro np,
   have q : Q := pq np,
   have b : false := nq q,
   exact b,
+=======
+  sorry,
+>>>>>>> 6a5cb529a223be050b3888aeeeb68128cf26973a
 end
 
 theorem impl_as_contrapositive_converse :
   (¬Q → ¬P) → (P → Q)  :=
 begin
+<<<<<<< HEAD
   intro nqnp,
   intro p,
   by_contradiction hboom,
   apply nqnp,
   exact hboom,
   exact p,
+=======
+  sorry,
+>>>>>>> 6a5cb529a223be050b3888aeeeb68128cf26973a
 end
 
 theorem contrapositive_law :
   (P → Q) ↔ (¬Q → ¬P)  :=
 begin
+<<<<<<< HEAD
   split,
   intro pq,
   intro nq,
@@ -143,6 +176,9 @@ begin
   apply nqnp,
   exact hboom,
   exact p,
+=======
+  sorry,
+>>>>>>> 6a5cb529a223be050b3888aeeeb68128cf26973a
 end
 
 
@@ -153,6 +189,7 @@ end
 theorem lem_irrefutable :
   ¬¬(P∨¬P)  :=
 begin
+<<<<<<< HEAD
   by_cases h : P,
   intro pp,
   apply pp,
@@ -162,6 +199,9 @@ begin
   apply pp,
   right,
   exact h,
+=======
+  sorry,
+>>>>>>> 6a5cb529a223be050b3888aeeeb68128cf26973a
 end
 
 
@@ -172,6 +212,7 @@ end
 theorem peirce_law_weak :
   ((P → Q) → P) → ¬¬P  :=
 begin
+<<<<<<< HEAD
   intro pqp,
   intro np,
   apply np,
@@ -180,6 +221,9 @@ begin
   have b : false := np p,
   exfalso,
   exact b,
+=======
+  sorry,
+>>>>>>> 6a5cb529a223be050b3888aeeeb68128cf26973a
 end
 
 
