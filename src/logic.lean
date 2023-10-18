@@ -523,37 +523,84 @@ variables P Q : U -> Prop
 theorem demorgan_exists :
   ¬(∃x, P x) → (∀x, ¬P x)  :=
 begin
-  sorry,
+  intro h,
+  intro a,
+  intro pa,
+  apply h,
+  existsi a,
+  exact pa,
 end
 
 theorem demorgan_exists_converse :
   (∀x, ¬P x) → ¬(∃x, P x)  :=
 begin
-  sorry,
+  intro a,
+  intro h,
+  cases h with b hb,
+  apply a,
+  exact hb,
 end
 
 theorem demorgan_forall :
   ¬(∀x, P x) → (∃x, ¬P x)  :=
 begin
-  sorry,
+  intro p,
+  by_contradiction,
+  apply p,
+  intro a,
+  by_contradiction j,
+  apply h,
+  existsi a,
+  exact j,
 end
 
 theorem demorgan_forall_converse :
   (∃x, ¬P x) → ¬(∀x, P x)  :=
 begin
-  sorry,
+  intro h,
+  intro a,
+  cases h with b hb,
+  have j := a(b),
+  apply hb,
+  exact j,
 end
 
 theorem demorgan_forall_law :
   ¬(∀x, P x) ↔ (∃x, ¬P x)  :=
 begin
-  sorry,
+  split,
+  intro q,
+  by_contradiction,
+  apply q,
+  intro b,
+  by_contradiction p,
+  apply h,
+  existsi b,
+  exact p,
+  intro h,
+  intro a,
+  cases h with b hb,
+  have j := a(b),
+  apply hb,
+  exact j,
 end
 
 theorem demorgan_exists_law :
   ¬(∃x, P x) ↔ (∀x, ¬P x)  :=
 begin
-  sorry,
+  split,
+  intro h,
+  intro a,
+  intro p,
+  apply h,
+  existsi a,
+  exact p,
+  intro a,
+  intro h,
+  cases h with b hb,
+  have k := a(b),
+  apply k,
+  exact hb,
 end
 
 
@@ -564,37 +611,85 @@ end
 theorem exists_as_neg_forall :
   (∃x, P x) → ¬(∀x, ¬P x)  :=
 begin
-  sorry,
+  intro q,
+  intro a,
+  cases q with b qb,
+  have p := a(b),
+  apply p,
+  exact qb,
 end
 
 theorem forall_as_neg_exists :
   (∀x, P x) → ¬(∃x, ¬P x)  :=
 begin
-  sorry,
+  intro a,
+  intro h,
+  cases h with b hb,
+  have p := a(b),
+  apply hb,
+  exact p,
 end
 
 theorem forall_as_neg_exists_converse :
   ¬(∃x, ¬P x) → (∀x, P x)  :=
 begin
-  sorry,
+  intro h,
+  intro a,
+  by_contradiction j,
+  apply h,
+  existsi a,
+  exact j,
 end
 
 theorem exists_as_neg_forall_converse :
   ¬(∀x, ¬P x) → (∃x, P x)  :=
 begin
-  sorry,
+  intro a,
+  by_contradiction j,
+  apply a,
+  intro p,
+  intro h,
+  apply j,
+  existsi p,
+  exact h,
 end
 
 theorem forall_as_neg_exists_law :
   (∀x, P x) ↔ ¬(∃x, ¬P x)  :=
 begin
-  sorry,
+  split,
+  intro a,
+  intro h,
+  cases h with b hb,
+  have p := a(b),
+  apply hb,
+  exact p,
+  intro h,
+  intro a,
+  by_contradiction j,
+  apply h,
+  existsi a,
+  exact j,
 end
 
 theorem exists_as_neg_forall_law :
   (∃x, P x) ↔ ¬(∀x, ¬P x)  :=
 begin
-  sorry,
+  split,
+  intro h,
+  intro a,
+  cases h with b hb,
+  have p := a(b),
+  apply p,
+  exact hb,
+  intro a,
+  by_contradiction j,
+  apply a,
+  intro h,
+  intro p,
+  apply j,
+  existsi h,
+  exact p,
 end
 
 
@@ -605,38 +700,89 @@ end
 theorem exists_conj_as_conj_exists :
   (∃x, P x ∧ Q x) → (∃x, P x) ∧ (∃x, Q x)  :=
 begin
-  sorry,
+  intro h,
+  split,
+  cases h,
+  existsi h_w,
+  cases h_h,
+  exact h_h_left,
+  cases h,
+  existsi h_w,
+  cases h_h,
+  exact h_h_right,
 end
 
 theorem exists_disj_as_disj_exists :
   (∃x, P x ∨ Q x) → (∃x, P x) ∨ (∃x, Q x)  :=
 begin
-  sorry,
+  intro h,
+  cases h with b hb,
+  cases hb with p q,
+  left,
+  existsi b,
+  exact p,
+  right,
+  existsi b,
+  exact q,
 end
 
 theorem exists_disj_as_disj_exists_converse :
   (∃x, P x) ∨ (∃x, Q x) → (∃x, P x ∨ Q x)  :=
 begin
-  sorry,
+  intro a,
+  cases a with p q,
+  cases p with b hb,
+  existsi b,
+  left,
+  exact hb,
+  cases q with a ah,
+  existsi a,
+  right,
+  exact ah,
 end
 
 theorem forall_conj_as_conj_forall :
   (∀x, P x ∧ Q x) → (∀x, P x) ∧ (∀x, Q x)  :=
 begin
-  sorry,
+  intro a,
+  split,
+  intro h,
+  have p := a(h),
+  cases p,
+  exact p_left,
+  intro h,
+  have p := a(h),
+  cases p,
+  exact p_right,
 end
 
 theorem forall_conj_as_conj_forall_converse :
   (∀x, P x) ∧ (∀x, Q x) → (∀x, P x ∧ Q x)  :=
 begin
-  sorry,
+  intro aa,
+  cases aa,
+  intro a,
+  split,
+  have p := aa_left(a),
+  exact p,
+  have q := aa_right(a),
+  exact q,
 end
 
 
 theorem forall_disj_as_disj_forall_converse :
   (∀x, P x) ∨ (∀x, Q x) → (∀x, P x ∨ Q x)  :=
 begin
-  sorry,
+  intro aa,
+  cases aa,
+  intro a,
+  left,
+  have p := aa(a),
+  exact p,
+  intro a,
+  right,
+  have q := aa(a),
+  exact q,
 end
 
 
